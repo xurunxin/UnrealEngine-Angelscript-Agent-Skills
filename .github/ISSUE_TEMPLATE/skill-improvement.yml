@@ -1,5 +1,5 @@
 name: Skill or Wiki improvement
-about: Propose a focused addition or correction to the UE-AS and EmmsUI knowledge suite
+description: Propose a focused addition or correction to the UE-AS and EmmsUI knowledge suite
 labels: [enhancement]
 body:
   - type: textarea

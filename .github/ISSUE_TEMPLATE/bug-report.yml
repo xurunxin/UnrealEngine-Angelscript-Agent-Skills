@@ -1,5 +1,5 @@
 name: Bug report
-about: Report incorrect guidance, broken validation, or a reproducible example failure
+description: Report incorrect guidance, broken validation, or a reproducible example failure
 labels: [bug]
 body:
   - type: textarea
