@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "entrypoint": "skills/ueas-router/SKILL.md",
+  "skills": [
+    {
+      "name": "ueas-router",
+      "path": "skills/ueas-router/SKILL.md",
+      "triggers": [
+        ".as",
+        "UnrealEngine-Angelscript",
+        "AngelscriptCode",
+        "EmmsUI",
+        "mm::"
+      ],
+      "load": []
+    },
+    {
+      "name": "ueas-bootstrap",
+      "path": "skills/ueas-bootstrap/SKILL.md",
+      "triggers": [
+        "install",
+        "build engine",
+        "upgrade",
+        "pin version",
+        "VS Code",
+        "Rider"
+      ]
+    },
+    {
+      "name": "ueas-core-scripting",
+      "path": "skills/ueas-core-scripting/SKILL.md",
+      "triggers": [
+        "syntax",
+        "class",
+        "struct",
+        "namespace",
+        "FName",
+        "f-string",
+        "default"
+      ]
+    },
+    {
+      "name": "ueas-gameplay",
+      "path": "skills/ueas-gameplay/SKILL.md",
+      "triggers": [
+        "Actor",
+        "Component",
+        "Subsystem",
+        "Enhanced Input",
+        "timer",
+        "gameplay architecture"
+      ]
+    },
+    {
+      "name": "ueas-reflection-blueprint",
+      "path": "skills/ueas-reflection-blueprint/SKILL.md",
+      "triggers": [
+        "UPROPERTY",
+        "UFUNCTION",
+        "BlueprintOverride",
+        "BlueprintEvent",
+        "delegate",
+        "BindWidget"
+      ]
+    },
+    {
+      "name": "ueas-networking",
+      "path": "skills/ueas-networking/SKILL.md",
+      "triggers": [
+        "Replicated",
+        "ReplicatedUsing",
+        "Server",
+        "Client",
+        "NetMulticast",
+        "OnRep"
+      ]
+    },
+    {
+      "name": "ueas-testing-debugging",
+      "path": "skills/ueas-testing-debugging/SKILL.md",
+      "triggers": [
+        "FUnitTest",
+        "FIntegrationTest",
+        "coverage",
+        "debug",
+        "Automation",
+        "CI"
+      ]
+    },
+    {
+      "name": "ueas-cpp-bindings",
+      "path": "skills/ueas-cpp-bindings/SKILL.md",
+      "triggers": [
+        "ScriptMixin",
+        "automatic binding",
+        "FAngelscriptBinds",
+        "C++ API not visible"
+      ]
+    },
+    {
+      "name": "ueas-packaging-performance",
+      "path": "skills/ueas-packaging-performance/SKILL.md",
+      "triggers": [
+        "cook",
+        "shipping",
+        "PrecompiledScript.Cache",
+        "JIT",
+        "transpile",
+        "performance"
+      ]
+    },
+    {
+      "name": "ueas-editor-tools",
+      "path": "skills/ueas-editor-tools/SKILL.md",
+      "triggers": [
+        "CallInEditor",
+        "menu extension",
+        "asset tool",
+        "Editor subsystem"
+      ]
+    },
+    {
+      "name": "emmsui-runtime",
+      "path": "skills/emmsui-runtime/SKILL.md",
+      "triggers": [
+        "UMMWidget",
+        "BeginDraw",
+        "ViewportOverlay",
+        "WidgetComponent",
+        "runtime UI"
+      ]
+    },
+    {
+      "name": "emmsui-editor-tools",
+      "path": "skills/emmsui-editor-tools/SKILL.md",
+      "triggers": [
+        "UMMEditorUtilityTab",
+        "detail customization",
+        "context menu",
+        "popup"
+      ]
+    },
+    {
+      "name": "emmsui-extension",
+      "path": "skills/emmsui-extension/SKILL.md",
+      "triggers": [
+        "extend EmmsUI",
+        "new helper",
+        "mm<T>",
+        "attribute specification",
+        "event listener"
+      ]
+    },
+    {
+      "name": "ueas-review",
+      "path": "skills/ueas-review/SKILL.md",
+      "triggers": [
+        "review",
+        "audit",
+        "migration",
+        "risk"
+      ]
+    }
+  ]
+}

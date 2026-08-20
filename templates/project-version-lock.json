@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "unreal": {
+    "version": "5.x.y",
+    "source_commit": "<commit>"
+  },
+  "ueas": {
+    "repository": "<authorized fork>",
+    "branch": "<pinned branch>",
+    "commit": "<commit>"
+  },
+  "emmsui": {
+    "repository": "Hazelight/EmmsUI",
+    "commit": "<commit>"
+  },
+  "plugins": [],
+  "validated": {
+    "cpp_build": false,
+    "basic_script": false,
+    "emmsui_basic": false,
+    "emmsui_input": false,
+    "emmsui_list_iterator": false,
+    "emmsui_editor_tab_reload": false,
+    "simulate_cooked": false,
+    "cook": false,
+    "package_launch": false
+  }
+}

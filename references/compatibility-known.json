@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "current_observed_pair": {
+    "ueas_commit": "546c4d6af141f1e820be1b2976211a756ca2639d",
+    "unreal_version": "5.8.1",
+    "ueas_observed_date": "2026-08-14",
+    "emmsui_commit": "c5d4e303f1fc8a1545de4d336be19e69dc8518c0",
+    "emmsui_observed_date": "2026-08-12",
+    "status": "source-signals-aligned-runtime-unverified",
+    "severity": "info",
+    "reason": "UE-AS commit 1a06a2bf adds the new Iterate() protocol and EmmsUI commit c9985c11 adds the matching list-view iterator binding; both are contained in the observed heads. This removes the old source-gap warning but does not replace target build and runtime evidence.",
+    "required_runtime_gates": [
+      "target C++ build",
+      "basic UMMWidget script compile and display",
+      "ListView range-for compile and visible-entry behavior",
+      "editable input round-trip and programmatic update conflict",
+      "open Editor Tab across structural script hot reload",
+      "viewport overlay input",
+      "as-simulate-cooked",
+      "Cook/Package launch"
+    ]
+  },
+  "superseded_snapshots": [
+    {
+      "ueas_commit": "7a77e74edb9d8a16f53caa56754e08589f2ee486",
+      "unreal_version": "5.5.4",
+      "emmsui_commit": "c5d4e303f1fc8a1545de4d336be19e69dc8518c0",
+      "status": "superseded-unverified",
+      "severity": "warning",
+      "superseded_by": "546c4d6af141f1e820be1b2976211a756ca2639d",
+      "reason": "Historical 0.1.0 observation. It is not the user's current synchronized engine baseline."
+    }
+  ],
+  "ueas_feature_commits": {
+    "new_iterator_protocol": "1a06a2bfbee9dca9d57badc93602ff21dbaf3c7e",
+    "editor_only_uas_classes": "f459e6322f63deef8d345f1c1624734cc22747e3",
+    "blueprint_self_parameter_error": "94f7023ba2dfe8d0759da2a161f2a8f1ba614666",
+    "soft_hotreload_duplicate_destructor_fix": "546c4d6af141f1e820be1b2976211a756ca2639d"
+  },
+  "emmsui_feature_commits": {
+    "mutable_input_state": "32ae41d6740a0b027358cf88a6e6629211c0cd54",
+    "new_list_iterator_protocol": "c9985c1170cdff885acb6730fa6ad76be77fbf94",
+    "editor_tab_reinstancing": "c5d4e303f1fc8a1545de4d336be19e69dc8518c0"
+  }
+}

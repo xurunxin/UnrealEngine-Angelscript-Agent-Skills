@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-20",
+  "sources": [
+    {
+      "id": "ueas-docs",
+      "kind": "git",
+      "repository": "Hazelight/Docs-UnrealEngine-Angelscript",
+      "ref": "master",
+      "commit": "3864c72fa3c1ef67413dfaad24417bad01879b4d",
+      "observed_commit_date": "2026-03-23",
+      "url": "https://github.com/Hazelight/Docs-UnrealEngine-Angelscript"
+    },
+    {
+      "id": "emmsui",
+      "kind": "git",
+      "repository": "Hazelight/EmmsUI",
+      "ref": "master",
+      "commit": "c5d4e303f1fc8a1545de4d336be19e69dc8518c0",
+      "observed_commit_date": "2026-08-12",
+      "url": "https://github.com/Hazelight/EmmsUI"
+    },
+    {
+      "id": "ueas-engine-observed",
+      "kind": "git-private-observed",
+      "repository": "xurunxin/UnrealEngine-Angelscript",
+      "ref": "angelscript-master",
+      "commit": "546c4d6af141f1e820be1b2976211a756ca2639d",
+      "observed_commit_date": "2026-08-14",
+      "engine_version": "5.8.1",
+      "upstream_repository": "Hazelight/UnrealEngine-Angelscript",
+      "upstream_sync_state": "observed-current-at-package-update",
+      "note": "用于核对当前用户可访问快照；用户确认该 fork 已同步上游。本包不分发任何 Epic Unreal Engine 源码，运行兼容性仍需项目 Gate。",
+      "sync_status": "user-confirmed-upstream-synchronized",
+      "previous_observed_commit": "7a77e74edb9d8a16f53caa56754e08589f2ee486"
+    },
+    {
+      "id": "ueas-site",
+      "kind": "website",
+      "url": "https://angelscript.hazelight.se/",
+      "observed_at": "2026-08-20"
+    },
+    {
+      "id": "vscode-ueas",
+      "kind": "git",
+      "repository": "Hazelight/vscode-unreal-angelscript",
+      "ref": "master",
+      "url": "https://github.com/Hazelight/vscode-unreal-angelscript",
+      "observed_at": "2026-08-20"
+    },
+    {
+      "id": "slateim",
+      "kind": "official-doc",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/SlateIM",
+      "observed_at": "2026-08-20",
+      "note": "仅用于与 EmmsUI 做边界对比。"
+    }
+  ]
+}

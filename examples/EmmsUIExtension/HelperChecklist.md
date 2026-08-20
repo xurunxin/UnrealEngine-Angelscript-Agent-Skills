@@ -1,0 +1,25 @@
+# Helper PR Checklist
+
+- [ ] 目标 UE‑AS / EmmsUI SHA；
+- [ ] 自动生成 `Set/Get/Was/On` 无法满足；
+- [ ] helper 的脚本签名；
+- [ ] AddWidget / Element null；
+- [ ] Attribute specification；
+- [ ] Compare / Assign / Reset；
+- [ ] Default / Current / Pending / Mirrored；
+- [ ] UObject/Struct GC；
+- [ ] RequiresWidgetRebuild；
+- [ ] event multiplicity；
+- [ ] listener migration；
+- [ ] Begin/End；
+- [ ] Runtime/Editor module；
+- [ ] first frame；
+- [ ] second frame reuse；
+- [ ] setter omitted reset；
+- [ ] programmatic + user input conflict；
+- [ ] same-frame multi-event；
+- [ ] hot reload；
+- [ ] simulate-cooked；
+- [ ] Cook；
+- [ ] documentation；
+- [ ] example。

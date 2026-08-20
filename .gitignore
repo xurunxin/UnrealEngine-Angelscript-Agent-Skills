@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Editors and OS
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+.DS_Store
+Thumbs.db
+
+# Unreal project output when the kit is tested inside a project
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Local validation and release output
+*.log
+*.tmp
+*.zip
+*.tar.gz
+release/
+artifacts/

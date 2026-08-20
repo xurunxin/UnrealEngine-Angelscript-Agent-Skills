@@ -1,0 +1,34 @@
+name: Bug report
+about: Report incorrect guidance, broken validation, or a reproducible example failure
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the incorrect behavior or guidance.
+    validations:
+      required: true
+  - type: input
+    id: ue
+    attributes:
+      label: Unreal version or commit
+    validations:
+      required: true
+  - type: input
+    id: ueas
+    attributes:
+      label: UnrealEngine-Angelscript commit
+    validations:
+      required: true
+  - type: input
+    id: emmsui
+    attributes:
+      label: EmmsUI commit
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction and evidence
+      description: Include the Skill/Wiki path, code, commands, and observed output.
+    validations:
+      required: true

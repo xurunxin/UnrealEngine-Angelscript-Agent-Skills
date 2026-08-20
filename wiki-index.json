@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "entrypoint": "wiki/Home.md",
+  "topics": [
+    {
+      "id": "install",
+      "path": "wiki/02-Install-and-Version-Pinning.md",
+      "keywords": [
+        "source engine",
+        "pin",
+        "upgrade"
+      ]
+    },
+    {
+      "id": "language",
+      "path": "wiki/04-Language-Cheatsheet.md",
+      "keywords": [
+        "syntax",
+        "float",
+        "FName",
+        "struct"
+      ]
+    },
+    {
+      "id": "reflection",
+      "path": "wiki/06-Reflection-Blueprint-and-Cpp-Interop.md",
+      "keywords": [
+        "UPROPERTY",
+        "UFUNCTION",
+        "Blueprint"
+      ]
+    },
+    {
+      "id": "hotreload",
+      "path": "wiki/07-Hot-Reload-and-State.md",
+      "keywords": [
+        "reinstance",
+        "state",
+        "PIE"
+      ]
+    },
+    {
+      "id": "networking",
+      "path": "wiki/08-Networking.md",
+      "keywords": [
+        "RPC",
+        "replication",
+        "OnRep"
+      ]
+    },
+    {
+      "id": "testing",
+      "path": "wiki/09-Testing-CI-and-Cooked-Simulation.md",
+      "keywords": [
+        "unit",
+        "integration",
+        "coverage",
+        "CI"
+      ]
+    },
+    {
+      "id": "emmsui-model",
+      "path": "wiki/20-EmmsUI-Mental-Model.md",
+      "keywords": [
+        "mm<T>",
+        "attribute",
+        "reuse"
+      ]
+    },
+    {
+      "id": "emmsui-state",
+      "path": "wiki/23-EmmsUI-State-Events-and-Identity.md",
+      "keywords": [
+        "Was",
+        "On",
+        "identity",
+        "input"
+      ]
+    },
+    {
+      "id": "emmsui-extension",
+      "path": "wiki/26-Extending-EmmsUI.md",
+      "keywords": [
+        "helper",
+        "binding",
+        "attribute state"
+      ]
+    },
+    {
+      "id": "compatibility",
+      "path": "wiki/31-Version-Compatibility.md",
+      "keywords": [
+        "commit",
+        "iterator protocol",
+        "UE 5.8.1",
+        "source-signals-aligned",
+        "runtime verification"
+      ]
+    }
+  ]
+}

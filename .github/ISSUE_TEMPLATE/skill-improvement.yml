@@ -1,0 +1,38 @@
+name: Skill or Wiki improvement
+about: Propose a focused addition or correction to the UE-AS and EmmsUI knowledge suite
+labels: [enhancement]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Agent task that is currently hard
+      description: Provide a realistic user request or coding task.
+    validations:
+      required: true
+  - type: dropdown
+    id: target
+    attributes:
+      label: Likely target
+      options:
+        - Existing Skill
+        - New Skill
+        - Wiki or reference
+        - Example
+        - Validation tool or test
+        - Source lock or compatibility research
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Current source evidence
+      description: Link or identify official docs, repository paths, commits, and runtime observations.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Scope and nearest non-goal
+      description: State what this proposal should not absorb.
+    validations:
+      required: true
