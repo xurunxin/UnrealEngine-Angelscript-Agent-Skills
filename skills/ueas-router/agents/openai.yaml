@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE-AS Skill Router"
+  short_description: "Route UE-AS and EmmsUI work to focused skills"
+  default_prompt: "Use $ueas-router to select the smallest useful UE-AS or EmmsUI skill set and preserve evidence boundaries."

@@ -79,3 +79,19 @@
 - Epic 对 Slate/UMG/SlateIM 的变化。
 
 把重要上游修复记录成项目 Issue，而不是靠成员记忆。
+
+
+## Agent Skills 与 skills.sh（0.2.0 调研）
+
+本次检索未发现另一套同时深入覆盖 UE-AS 与 EmmsUI 的公开 Skill 套件，但通用 Unreal Skill 已较丰富：
+
+- Epic 的 Unreal Agent Skills 强调 Skill 新颖性、耐久性、工具无关性和上下文经济；
+- quodsoler 以 `.agents/ue-project-context.md` 作为跨 Skill 项目事实；
+- kevinpbuckley 用精确 UE 版本、源码路径和 golden tasks 控制漂移；
+- DSTN2000 强调零假设项目发现；
+- gamedev-skills 使用 Router 和 `agents/openai.yaml`；
+- skills.sh 提供标准安装与发现入口。
+
+本仓库吸收这些工作流，但不复制通用 Niagara、Animation、Audio、Mass、GAS 或普通 C++ 内容。UE-AS/EmmsUI 特有语义由本仓库负责，普通 Unreal 领域交给更专业的通用 Skill。
+
+详见 [生态比对报告](../docs/ECOSYSTEM-COMPARISON-2026-08-20.md)。

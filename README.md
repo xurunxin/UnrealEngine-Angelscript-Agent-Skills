@@ -1,60 +1,101 @@
-# UnrealEngine‑Angelscript Agent Kit
+# UnrealEngine-Angelscript Agent Skills
 
-**版本：0.1.1**
+**版本：0.2.0**
 
-面向 **UnrealEngine‑Angelscript（UE‑AS）+ EmmsUI** 项目的模块化 Skills 与 Wiki。目标不是让 Agent 记住一份长文，而是让它：
+面向 **UnrealEngine-Angelscript（UE-AS）+ EmmsUI** 项目的模块化 Agent Skills、Wiki、示例与验证工具。目标不是让 Agent 记住一份长文，而是让它：
 
-1. 先识别项目实际使用的 Unreal、UE‑AS 与 EmmsUI 版本；
-2. 按任务只加载需要的 Skill；
-3. 遵守 UE‑AS 的反射、热重载、网络、测试与发布边界；
-4. 正确理解 EmmsUI 是“即时式声明前端 + 被保留和复用的 UMG Widget 树”，而不是每帧无条件重建全部 UObject；
-5. 在修改源码前给出可验证的最小方案，并运行对应的编译、测试或兼容性检查。
+1. 先确认项目实际使用的 Unreal、UE-AS 与 EmmsUI ref；
+2. 把可变项目事实写入 `.agents/ueas-project-context.md`；
+3. 按任务只加载一个主要 Skill，必要时再增加最小 Supporting Skill；
+4. 遵守 UE-AS 的反射、热重载、网络、Binding、测试和发布边界；
+5. 正确理解 EmmsUI 是“即时式声明前端 + 被保留和复用的 UMG Widget 树”；
+6. 将静态源码信号、编译、运行、Cook 和 Package 证据分层报告。
 
-## 快速使用
+## 安装
 
-将整个目录放入项目，例如：
+### skills.sh / Skills CLI
+
+安装全部 Skills：
+
+```bash
+npx skills add xurunxin/UnrealEngine-Angelscript-Agent-Skills
+```
+
+只安装 Router：
+
+```bash
+npx skills add xurunxin/UnrealEngine-Angelscript-Agent-Skills --skill ueas-router
+```
+
+只安装项目上下文 Skill：
+
+```bash
+npx skills add xurunxin/UnrealEngine-Angelscript-Agent-Skills --skill ueas-project-context
+```
+
+CLI 行为会随版本变化；命令仅作为当前分发入口，Skill 正文不依赖某个具体 Agent 客户端。
+
+### 作为项目内知识包
+
+也可以将仓库放入项目，例如：
 
 ```text
 <Project>/
   .agent/
     ueas-agent-kit/
+  .agents/
+    ueas-project-context.md
   Script/
   Content/
 ```
 
-Agent 的项目级入口可以引用：
+项目级 `AGENTS.md` 可引用：
 
 ```markdown
-当任务涉及 `.as`、UnrealEngine‑Angelscript、AngelscriptCode、EmmsUI、`UMMWidget`
+当任务涉及 `.as`、UnrealEngine-Angelscript、AngelscriptCode、EmmsUI、`UMMWidget`
 或 `mm::` 时，先读取 `.agent/ueas-agent-kit/skills/ueas-router/SKILL.md`。
+如果 `.agents/ueas-project-context.md` 缺失或版本事实已变化，先加载
+`.agent/ueas-agent-kit/skills/ueas-project-context/SKILL.md`。
 ```
-
-也可以直接复制本包根目录的 `AGENTS.md` 片段到项目说明中。
 
 ## Skills 路由
 
 | 任务 | 首选 Skill |
 |---|---|
-| 环境、源码引擎、版本固定、首次安装 | `ueas-bootstrap` |
+| 跨域、模糊、版本敏感任务的最小路由 | `ueas-router` |
+| 创建/刷新项目、引擎、插件、模块与 Script roots 上下文 | `ueas-project-context` |
+| 源码引擎、首次安装、升级、IDE、版本固定 | `ueas-bootstrap` |
 | 基础语法、类、结构体、默认值、代码组织 | `ueas-core-scripting` |
 | Actor、Component、Subsystem、输入、Gameplay 架构 | `ueas-gameplay` |
-| UPROPERTY、UFUNCTION、Blueprint、委托、计时器、UMG | `ueas-reflection-blueprint` |
-| RPC、属性复制、OnRep、多人联机测试 | `ueas-networking` |
-| 单元测试、集成测试、覆盖率、调试、CI | `ueas-testing-debugging` |
-| 自动绑定、Mixin、C++ 暴露到脚本 | `ueas-cpp-bindings` |
-| Cook、simulate-cooked、预编译缓存、性能与发布 | `ueas-packaging-performance` |
-| 编辑器菜单、工具、详情面板、Editor-only 脚本 | `ueas-editor-tools` |
+| UPROPERTY、UFUNCTION、Blueprint、Delegate、Timer、UMG | `ueas-reflection-blueprint` |
+| RPC、属性复制、OnRep、多人联机 | `ueas-networking` |
+| 单元/集成测试、覆盖率、调试、CI | `ueas-testing-debugging` |
+| 自动绑定、Mixin、C++ 暴露到脚本、Static JIT 边界 | `ueas-cpp-bindings` |
+| simulate-cooked、Cook、Package、缓存、性能 | `ueas-packaging-performance` |
+| 非 EmmsUI Editor 菜单、资产工具、Editor subsystem | `ueas-editor-tools` |
 | EmmsUI 运行时 UI、Overlay、WidgetComponent | `emmsui-runtime` |
-| EmmsUI 编辑器标签页、详情定制、弹窗、上下文菜单 | `emmsui-editor-tools` |
-| 扩展 EmmsUI C++ helper、属性、事件、模块 | `emmsui-extension` |
-| 审查已有 UE‑AS / EmmsUI 改动 | `ueas-review` |
+| EmmsUI Editor Tab、Details、Popup、Context Menu | `emmsui-editor-tools` |
+| 扩展 EmmsUI C++ helper、属性、事件和模块 | `emmsui-extension` |
+| 审查已有 UE-AS / EmmsUI 改动 | `ueas-review` |
 
 入口始终是 [`skills/ueas-router/SKILL.md`](skills/ueas-router/SKILL.md)。
+
+## 项目上下文
+
+首次接手项目或同步 Engine/UE-AS/EmmsUI 后，使用
+[`ueas-project-context`](skills/ueas-project-context/SKILL.md) 创建或刷新：
+
+```text
+<Project>/.agents/ueas-project-context.md
+```
+
+它会记录实际 `.uproject`、源码引擎版本/ref、UE-AS/EmmsUI ref、模块、Target、Script roots、Binding 边界和验证矩阵。多个 `.uproject`、多个 Engine checkout 或重复插件存在时必须报告歧义，不能自动猜选。
 
 ## Wiki 入口
 
 从 [`wiki/Home.md`](wiki/Home.md) 开始。高频页面：
 
+- [`wiki/00-Project-Context-and-Discovery.md`](wiki/00-Project-Context-and-Discovery.md)
 - [`wiki/02-Install-and-Version-Pinning.md`](wiki/02-Install-and-Version-Pinning.md)
 - [`wiki/06-Reflection-Blueprint-and-Cpp-Interop.md`](wiki/06-Reflection-Blueprint-and-Cpp-Interop.md)
 - [`wiki/07-Hot-Reload-and-State.md`](wiki/07-Hot-Reload-and-State.md)
@@ -63,69 +104,79 @@ Agent 的项目级入口可以引用：
 - [`wiki/23-EmmsUI-State-Events-and-Identity.md`](wiki/23-EmmsUI-State-Events-and-Identity.md)
 - [`wiki/26-Extending-EmmsUI.md`](wiki/26-Extending-EmmsUI.md)
 - [`wiki/31-Version-Compatibility.md`](wiki/31-Version-Compatibility.md)
+- [`docs/ECOSYSTEM-COMPARISON-2026-08-20.md`](docs/ECOSYSTEM-COMPARISON-2026-08-20.md)
 
-## 当前锁定的研究快照
+## 0.2.0 生态比对结论
 
-本包内容基于 `sources.lock.json` 中记录的源码快照：
+GitHub 与 skills.sh 上存在多套高质量通用 Unreal Engine Skills，但本次检索没有发现另一套同时深入覆盖 **Hazelight UnrealEngine-Angelscript + EmmsUI** 的同类知识包。
 
-- UE‑AS 官方文档源码：`3864c72fa3c1ef67413dfaad24417bad01879b4d`
-- 用户当前 UE‑AS 引擎基线：`546c4d6af141f1e820be1b2976211a756ca2639d`
-  - 分支：`angelscript-master`
-  - `Engine/Build/Build.version`：Unreal Engine `5.8.1`
-  - 观察日期：2026‑08‑14
-- EmmsUI：`c5d4e303f1fc8a1545de4d336be19e69dc8518c0`
-  - 观察日期：2026‑08‑12
+0.2.0 借鉴而不复制以下模式：
 
-### 当前兼容性判断
+- Epic Unreal Agent Skills：Skill 应新颖、耐久、工具无关、节省上下文；
+- quodsoler：先建立项目上下文，再执行专题任务；
+- kevinpbuckley：源码路径验证与 golden task 回归；
+- DSTN2000：零假设项目发现；
+- gamedev-skills：Router 与 `agents/openai.yaml`；
+- skills.sh：标准 `skills/<name>/SKILL.md` 分发布局。
 
-旧包 0.1.0 基于尚未同步的 UE 5.5.4 镜像，因此把当前 EmmsUI 标记为存在明显日期/API 间隔。该判断现已失效。
+本仓库继续只拥有 UE-AS/EmmsUI 特有边界；Niagara、Mass、Animation、Audio、GAS 等普通 Unreal 领域应交给通用 Unreal Skills，除非任务跨入 UE-AS 的反射、Binding、热重载或 Cook 语义。
 
-当前 UE‑AS 基线包含 `1a06a2bf...` 引入的新 `Iterate()` 迭代协议；当前 EmmsUI 又包含 `c9985c1...` 对 ListView 的匹配实现。因此，**当前锁定组合的迭代协议在源码信号层面对齐**。
+详细比对见 [`docs/ECOSYSTEM-COMPARISON-2026-08-20.md`](docs/ECOSYSTEM-COMPARISON-2026-08-20.md)。
 
-这不等于已经证明二进制或运行时兼容。仍应运行：
+## 当前锁定研究快照
 
-```powershell
-python .agent/ueas-agent-kit/tools/probe_compatibility.py `
-  --engine-root "D:\UE-Angelscript" `
-  --emmsui-root "<Project>\Plugins\EmmsUI" `
-  --project-root "<Project>" `
-  --json-out "<Project>\Saved\ueas-compatibility.json"
+核心源码基线记录在 `sources.lock.json`：
+
+- UE-AS 文档：`3864c72fa3c1ef67413dfaad24417bad01879b4d`；
+- 用户 UE-AS 引擎：`546c4d6af141f1e820be1b2976211a756ca2639d`；
+- Unreal Engine：`5.8.1`；
+- EmmsUI：`c5d4e303f1fc8a1545de4d336be19e69dc8518c0`。
+
+生态研究快照记录在 `sources/ecosystem-skills.lock.json`。
+
+当前 UE-AS 与 EmmsUI 的新 `Iterate()` 协议在源码信号层面对齐。正确状态是：
+
+```text
+source-signals-aligned-runtime-unverified
 ```
 
-然后完成目标 C++ build、最小 `UMMWidget`、ListView range-for、双向输入、Editor Tab 结构性热重载、simulate-cooked 与 Cook/Package smoke。
+它不等于完整 C++ build、AngelScript compile、EmmsUI runtime、热重载或 Cook 已通过。
 
-## 验证本包
+## 验证仓库
 
 ```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate_skills.py
 python tools/validate_kit.py .
+python scripts/validate_evals.py
+python scripts/check_source_refs.py
 python -m unittest discover -s tests -v
+python -m compileall -q scripts tools tests
 ```
 
-验证内容包括：
+具备精确 UE-AS Engine 与 EmmsUI checkout 时，再运行：
 
-- Skill frontmatter；
-- Skill 名称唯一性；
-- Markdown 相对链接；
-- 代码围栏完整性；
-- JSON 可解析；
-- 来源锁和清单；
-- 兼容性探针协议判断；
-- UE‑AS 静态检查关键规则；
-- SHA‑256 校验。
+```bash
+python scripts/check_source_refs.py \
+  --engine-root "<UE-AS_ENGINE_ROOT>" \
+  --emmsui-root "<PROJECT>/Plugins/EmmsUI" \
+  --require-roots
+```
+
+仓库验证只证明 Skill、链接、Fixture、脚本和引用格式正确。目标项目仍需完成 C++ build、脚本编译、PIE、Dedicated Server、EmmsUI smoke、simulate-cooked、Cook、Package 和打包程序启动检查。完整 Gate 见 [`docs/QUALITY-GATES.md`](docs/QUALITY-GATES.md)。
 
 ## 使用原则
 
-- 项目源码和项目约定始终高于本包的通用建议。
-- 不把普通 AngelScript 与 UE‑AS 定制语法混为一谈。
-- 不把 UE‑AS 当作“复制到项目 Plugins 目录即可”的普通插件；它包含引擎源码修改。
-- 不为“可能有用”而添加 `UPROPERTY` / `UFUNCTION`；只在反射边界需要时添加。
-- Blueprint 可调用/事件函数的参数不要命名为 `Self`；当前编译器会将其视为 Unreal 反射保留名。
-- 不把脚本热重载与 C++ Live Coding 混为一谈。
-- 即使锁定组合源码信号对齐，也不跳过目标项目编译和运行时验证。
-- 不把 `GetUnderlyingWidget()` 当成默认路径。
-- 不把 UI 状态藏在每帧临时局部变量中，除非 helper 明确通过引用回写。
-- 不以“编辑器能运行”代替 simulate-cooked、打包和多人模式验证。
+- 项目源码、锁定 ref 和当前运行证据高于上游 latest 与社区示例。
+- 不把普通 AngelScript 与 UE-AS 定制语法混为一谈。
+- 不把 UE-AS 当作可直接复制到 Launcher 引擎的普通项目插件。
+- 普通脚本成员/函数优先；只为真实 Unreal 反射消费者增加宏。
+- Blueprint 可调用/事件函数参数不要命名为 `Self`。
+- 函数体热重载与字段、反射签名、继承、默认组件变化必须分层处理。
+- `source-signals-aligned`、`build-passed`、`runtime-smoke-passed` 和 `cook-passed` 不可互相替代。
+- EmmsUI 状态放在持久模型中；同父容器内身份敏感的同类兄弟保持稳定结构与顺序。
+- 不以“Editor 能运行”代替 simulate-cooked、Cook、Package 和打包程序启动。
 
-## 研究边界
+## 研究与执行边界
 
-本环境完成了官方文档、官方公开仓库和用户可访问引擎镜像的源码级静态审阅，但没有在本机编译完整 Unreal 引擎，也没有运行目标项目的 PIE、Dedicated Server、Cook 或平台包。`RESEARCH_REPORT.md` 对已验证事实、源码对齐信号和待项目验证事项做了区分。
+本仓库包含源码级研究、静态工具和测试模板，但不分发 Epic Unreal Engine 源码。本次 0.2.0 仓库验证没有在此环境运行目标 UE 项目的完整引擎构建、PIE、Dedicated Server、Cook 或平台包；这些状态必须保持 `not-run`，直到目标项目提供可观察证据。

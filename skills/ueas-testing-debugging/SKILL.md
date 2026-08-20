@@ -1,6 +1,11 @@
 ---
 name: ueas-testing-debugging
-description: Create and run UnrealEngine-Angelscript unit tests, integration tests, code coverage, VS Code debugging, exception diagnostics, and CI compile gates.
+description: >-
+  Create and run UnrealEngine-Angelscript unit tests, integration tests, coverage, VS Code debugging, exception diagnostics, and CI compile gates. Use when producing or interpreting test and debug evidence. Do not use for feature implementation that has no testing or diagnosis scope.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

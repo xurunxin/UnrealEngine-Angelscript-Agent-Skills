@@ -1,6 +1,11 @@
 ---
 name: ueas-bootstrap
-description: Set up, pin, upgrade, and diagnose a source-built UnrealEngine-Angelscript environment, project Script workspace, IDE integration, and EmmsUI plugin compatibility.
+description: >-
+  Set up, pin, upgrade, and diagnose a source-built UnrealEngine-Angelscript environment, Script workspace, IDE integration, and EmmsUI compatibility. Use when the engine or plugin baseline is being created or changed. Do not use for a scoped gameplay change in an already working, verified environment.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

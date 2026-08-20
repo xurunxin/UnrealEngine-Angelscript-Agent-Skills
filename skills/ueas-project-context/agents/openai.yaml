@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE-AS Project Context"
+  short_description: "Discover and persist verified UE-AS project facts"
+  default_prompt: "Use $ueas-project-context to create or refresh the project's verified UE-AS and EmmsUI context before version-sensitive work."

@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "purpose": "Routing and boundary cases for the UE-AS and EmmsUI Skill suite.",
+  "cases": [
+    {
+      "id": "router-cross-cutting-upgrade",
+      "prompt": "把项目的 UE-AS 引擎和 EmmsUI 同步到新版本，检查脚本、ListView、热重载、Cook 并给出迁移结果。",
+      "expected_skill": "ueas-router",
+      "category": "positive",
+      "rationale": "The task crosses version context, build, UI, hot reload and packaging gates."
+    },
+    {
+      "id": "router-review-mixed-change",
+      "prompt": "审查一个同时修改 UPROPERTY、RPC、EmmsUI 输入框和 C++ binding 的提交，按风险给出验证矩阵。",
+      "expected_skill": "ueas-router",
+      "category": "positive",
+      "rationale": "Multiple independent UE-AS domains require minimal multi-skill routing."
+    },
+    {
+      "id": "router-boundary-known-reflection",
+      "prompt": "项目版本和上下文都已确认，只判断这个脚本缓存字段是否需要 UPROPERTY，并给出最小 Blueprint 只读接口。",
+      "expected_skill": "ueas-reflection-blueprint",
+      "category": "boundary",
+      "boundary_for": "ueas-router",
+      "rationale": "A single known specialist task should not pay router/context overhead."
+    },
+    {
+      "id": "project-context-onboarding",
+      "prompt": "第一次接手这个 UE-AS 项目，请从 uproject、源码引擎、插件、Build.cs 和 Script 目录生成项目上下文。",
+      "expected_skill": "ueas-project-context",
+      "category": "positive",
+      "rationale": "The requested artifact is the verified project context."
+    },
+    {
+      "id": "project-context-refresh-after-sync",
+      "prompt": "我刚同步了 UnrealEngine-Angelscript 上游并更新 EmmsUI，请刷新 .agents/ueas-project-context.md，不要沿用旧 SHA。",
+      "expected_skill": "ueas-project-context",
+      "category": "positive",
+      "rationale": "Mutable engine/plugin facts make the existing context stale."
+    },
+    {
+      "id": "project-context-boundary-generic-docs",
+      "prompt": "解释 Unreal 的 GameMode 和 GameState 有什么区别，不需要查看我的项目。",
+      "expected_skill": "none",
+      "category": "boundary",
+      "boundary_for": "ueas-project-context",
+      "rationale": "A generic conceptual question does not need project discovery."
+    },
+    {
+      "id": "reflection-minimal-surface",
+      "prompt": "这个 UE-AS 类有十个成员，只有两个要在 Details 配置、一个给蓝图只读，请设计最小 UPROPERTY/UFUNCTION 表面。",
+      "expected_skill": "ueas-reflection-blueprint",
+      "category": "positive",
+      "rationale": "The task is explicitly reflection-surface design."
+    },
+    {
+      "id": "reflection-structural-hotreload",
+      "prompt": "给脚本 UCLASS 增加 BindWidget 字段后蓝图实例异常，判断结构性热重载风险和安全恢复步骤。",
+      "expected_skill": "ueas-reflection-blueprint",
+      "category": "positive",
+      "rationale": "Reflection ABI and Blueprint reinstancing are the core issue."
+    },
+    {
+      "id": "reflection-boundary-native-api-missing",
+      "prompt": "C++ 插件的非反射方法在 AngelScript 中完全不可见，请决定自动绑定、Mixin 或手工 FAngelscriptBinds。",
+      "expected_skill": "ueas-cpp-bindings",
+      "category": "boundary",
+      "boundary_for": "ueas-reflection-blueprint",
+      "rationale": "Missing native API exposure belongs to binding design, not script reflection."
+    },
+    {
+      "id": "emmsui-runtime-state-panel",
+      "prompt": "用 UMMWidget 做一个运行时状态面板，输入框值要持久化，并避免条件分支让控件焦点串位。",
+      "expected_skill": "emmsui-runtime",
+      "category": "positive",
+      "rationale": "Runtime EmmsUI state and identity are the direct deliverable."
+    },
+    {
+      "id": "unrelated-unity",
+      "prompt": "在 Unity 里用 C# 写一个 ScriptableObject 背包系统。",
+      "expected_skill": "none",
+      "category": "unrelated",
+      "rationale": "The request is outside UnrealEngine-Angelscript and EmmsUI."
+    }
+  ]
+}
