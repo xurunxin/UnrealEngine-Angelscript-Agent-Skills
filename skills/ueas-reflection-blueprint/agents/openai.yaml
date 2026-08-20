@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE-AS Reflection & Blueprint"
+  short_description: "Design the smallest safe Unreal reflection surface"
+  default_prompt: "Use $ueas-reflection-blueprint to expose only the UE-AS members that truly require Unreal reflection or Blueprint access."

@@ -1,6 +1,11 @@
 ---
 name: emmsui-runtime
-description: Build runtime immediate-mode UMG interfaces with EmmsUI using UMMWidget, draw contexts, overlays, widget components, persistent state, attributes, slots, events, and stable identity.
+description: >-
+  Build runtime immediate-mode UMG interfaces with EmmsUI using UMMWidget, draw contexts, overlays, widget components, persistent state, attributes, slots, events, and stable identity. Use when drawing in-game or viewport UI. Do not use for Editor tabs or for modifying EmmsUI C++ bindings.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 name: ueas-core-scripting
-description: Write idiomatic UnrealEngine-Angelscript classes, structs, functions, values, references, namespaces, defaults, literals, and hot-reload-friendly code.
+description: >-
+  Write idiomatic UnrealEngine-Angelscript classes, structs, functions, values, references, namespaces, defaults, literals, and hot-reload-friendly code. Use when the task concerns UE-AS language semantics or code organization. Do not use for native C++ binding design or broad gameplay architecture.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

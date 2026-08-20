@@ -1,6 +1,11 @@
 ---
 name: ueas-gameplay
-description: Design and implement Unreal gameplay with Angelscript Actors, Components, Subsystems, Enhanced Input, timers, data flow, and maintainable C++/Blueprint boundaries.
+description: >-
+  Design and implement Unreal gameplay with Angelscript Actors, Components, Subsystems, Enhanced Input, timers, data flow, and maintainable C++/Blueprint boundaries. Use when implementing UE-AS gameplay architecture or behavior. Do not use for isolated reflection, networking, packaging, or generic C++-only tasks.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

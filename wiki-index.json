@@ -1,7 +1,19 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "entrypoint": "wiki/Home.md",
   "topics": [
+    {
+      "id": "project-context",
+      "path": "wiki/00-Project-Context-and-Discovery.md",
+      "keywords": [
+        ".uproject",
+        "project context",
+        "engine ref",
+        "EmmsUI ref",
+        "Script roots",
+        "ambiguity"
+      ]
+    },
     {
       "id": "install",
       "path": "wiki/02-Install-and-Version-Pinning.md",
@@ -95,6 +107,17 @@
         "UE 5.8.1",
         "source-signals-aligned",
         "runtime verification"
+      ]
+    },
+    {
+      "id": "ecosystem-skills",
+      "path": "docs/ECOSYSTEM-COMPARISON-2026-08-20.md",
+      "keywords": [
+        "skills.sh",
+        "Agent Skills",
+        "Unreal skills",
+        "routing",
+        "evals"
       ]
     }
   ]

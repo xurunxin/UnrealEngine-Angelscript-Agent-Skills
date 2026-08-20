@@ -1,48 +1,59 @@
 # Validation Report
 
-Generated: 2026‑08‑20  
-Package: 0.1.1
+Generated: 2026-08-20
+Package: 0.2.0
 
-## Artifact checks
+## Repository checks
 
-- `python tools/validate_kit.py .` — PASS
-  - 14 Skills
-  - 63 Markdown files
-  - 0 warnings
-  - 0 errors
-- Python syntax compile for `tools/*.py` and `tests/*.py` — PASS
-- `python -m unittest discover -s tests -v` — PASS
-  - 4 tests
-  - aligned UE‑AS/EmmsUI iterator signals remain informational
-  - a new EmmsUI iterator with a missing engine signal produces a warning
-  - an older engine baseline with current-feature EmmsUI produces warnings
-  - reflected `UFUNCTION` parameter `Self` is detected by the static linter
-- `lint_ueas.py` executed against included examples — PASS as a heuristic scan
-  - 13 `.as` files scanned
-  - 6 expected review findings: 1 medium, 5 informational
-  - no high-severity finding
-- Relative Markdown links — PASS
-- JSON parsing — PASS
-- Frontmatter uniqueness — PASS
-- Manifest and SHA‑256 verification — PASS
-- ZIP integrity and packaged manifest verification — PASS
+The following commands are the release gate:
 
-## Source-update correction
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate_skills.py
+python tools/validate_kit.py .
+python scripts/validate_evals.py
+python scripts/check_source_refs.py
+python -m unittest discover -s tests -v
+python -m compileall -q scripts tools tests
+```
 
-The package now locks the observed engine snapshot to UE 5.8.1 / `546c4d6a…`. UE‑AS `1a06a2bf…` and EmmsUI `c9985c11…` contain corresponding new `Iterate()` protocol implementations, so the historical UE 5.5.4 source-gap warning is no longer applied to the current baseline.
+Expected coverage:
 
-The compatibility status is `source-signals-aligned-runtime-unverified`, not “runtime compatible”.
+- 15 Agent Skills;
+- strict YAML frontmatter through PyYAML;
+- name/directory equality, description trigger and exclusion boundaries;
+- Skill activation line budget;
+- `agents/openai.yaml` schema;
+- Markdown fences and local links;
+- package structure, JSON, source lock and compatibility fixtures;
+- routing and behavior eval fixture integrity;
+- source-reference safe format, with optional real-source existence checks;
+- compatibility probe and UE-AS static-lint regressions;
+- deterministic release metadata.
 
-## Not executed in this environment
+## Evidence interpretation
 
-- Unreal Engine source build;
-- target project C++ compile;
-- AngelScript Editor compile;
-- PIE hot reload;
-- VS Code debugger;
-- Dedicated Server integration tests;
-- simulate-cooked against the target project;
-- Cook/Package;
-- platform runtime profiling.
+Passing repository checks means the Skill package is structurally valid and its deterministic tests pass. It does not mean a target Unreal project is compatible.
 
-The package must not be used to claim those runtime checks passed. Run the supplied compatibility probe and CI templates inside the exact locked UE‑AS project.
+The current locked UE-AS and EmmsUI refs have corresponding new iterator protocol source signals. This remains:
+
+```text
+source-signals-aligned-runtime-unverified
+```
+
+## Target-project gates not executed here
+
+- Unreal Engine Development Editor build;
+- target project C++ build;
+- AngelScript compile and tests;
+- Soft and Structural Hot Reload;
+- PIE runtime smoke;
+- Dedicated Server/client integration;
+- EmmsUI input/ListView/TreeView/Editor Tab smoke;
+- Static JIT and precompiled script cache;
+- simulate-cooked;
+- Cook;
+- Package;
+- packaged executable launch.
+
+A project release must attach its own observable evidence for each applicable gate.

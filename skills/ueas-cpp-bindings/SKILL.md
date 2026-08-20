@@ -1,6 +1,11 @@
 ---
 name: ueas-cpp-bindings
-description: Expose C++ APIs to UnrealEngine-Angelscript using reflection-driven automatic bindings, script mixins, metadata controls, and narrowly scoped manual bindings.
+description: >-
+  Expose C++ APIs to UnrealEngine-Angelscript using automatic reflection bindings, script mixins, metadata controls, and narrowly scoped manual bindings. Use when a required native API is not correctly visible to scripts. Do not use when ordinary script code or reflection annotations already solve the task.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

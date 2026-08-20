@@ -1,6 +1,11 @@
 ---
 name: ueas-networking
-description: Implement and verify Unreal multiplayer replication and RPCs in Angelscript, including authority, ownership, reliability, OnRep, conditions, and dedicated-server integration tests.
+description: >-
+  Implement and verify Unreal multiplayer replication and RPCs in Angelscript, including authority, ownership, reliability, OnRep, conditions, and dedicated-server integration tests. Use when state or calls cross network roles. Do not use for single-player state flow or general gameplay architecture without networking.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

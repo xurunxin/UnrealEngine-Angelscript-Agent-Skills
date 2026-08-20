@@ -1,6 +1,11 @@
 ---
 name: ueas-editor-tools
-description: Build Unreal Editor automation and tools in Angelscript with editor-only compilation, menu extensions, CallInEditor actions, asset operations, prompts, UMG, and subsystem lifetimes.
+description: >-
+  Build Unreal Editor automation and tools in Angelscript with editor-only compilation, menu extensions, CallInEditor actions, asset operations, prompts, UMG, and subsystem lifetimes. Use when implementing non-EmmsUI editor scripting. Do not use for runtime gameplay or EmmsUI Editor tabs and details UI.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

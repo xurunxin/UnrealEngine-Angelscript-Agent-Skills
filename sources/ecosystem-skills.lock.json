@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-08-20",
+  "purpose": "Research provenance for the 0.2.0 Skill-ecosystem comparison; not a runtime compatibility certificate.",
+  "sources": [
+    {
+      "id": "epic-unreal-agent-skills",
+      "repository": "EpicGames/unreal-engine-skills-for-claude-code-plugin",
+      "ref": "main",
+      "commit": "7e3b09bbf6d2984c155233f9d3de5fcf523d2d42",
+      "adopted": [
+        "durable and parsimonious Skill guidance",
+        "tool/runtime separation",
+        "agents/openai.yaml convention"
+      ]
+    },
+    {
+      "id": "quodsoler-unreal-engine-skills",
+      "repository": "quodsoler/unreal-engine-skills",
+      "ref": "main",
+      "commit": "231c8571be6f3335685edc566a28ec6f9621361d",
+      "adopted": [
+        "project context artifact",
+        "context-first routing",
+        "broad Unreal handoff boundary"
+      ]
+    },
+    {
+      "id": "kevinpbuckley-unreal-engine-skills",
+      "repository": "kevinpbuckley/unreal-engine-skills",
+      "ref": "master",
+      "commit": "5704060a01f8e7c0d31b003586f98186bef9c8a4",
+      "adopted": [
+        "source citation verification",
+        "golden task evals",
+        "compile/API/task evidence layers"
+      ]
+    },
+    {
+      "id": "dstn2000-unreal-engine-skill",
+      "repository": "DSTN2000/claude-unreal-engine-skill",
+      "ref": "main",
+      "commit": "d58c833a1e4a2b6cea6da8430a81ea32772cd336",
+      "adopted": [
+        "zero-assumption project discovery"
+      ]
+    },
+    {
+      "id": "awesome-gamedev-agent-skills",
+      "repository": "gamedev-skills/awesome-gamedev-agent-skills",
+      "ref": "main",
+      "commit": "9ca5296b219049c5b68494e1f3c274ead6d727b3",
+      "adopted": [
+        "smallest-useful-skill router",
+        "client interface metadata"
+      ]
+    },
+    {
+      "id": "skills-cli",
+      "repository": "vercel-labs/skills",
+      "ref": "main",
+      "commit": "435076e78988e1e6ec40d00b0b1d76bdbbc5419a",
+      "adopted": [
+        "skills.sh-compatible repository layout and installation documentation"
+      ]
+    },
+    {
+      "id": "skills-sh-search",
+      "kind": "website-index",
+      "url": "https://skills.sh/",
+      "queries": [
+        "UnrealEngine Angelscript",
+        "Unreal Engine AngelScript EmmsUI",
+        "EmmsUI"
+      ],
+      "finding": "No exact UE-AS plus EmmsUI peer suite found in the observed index; general Unreal Skills were available."
+    }
+  ]
+}

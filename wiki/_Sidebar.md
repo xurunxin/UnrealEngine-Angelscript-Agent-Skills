@@ -1,4 +1,5 @@
 - [Home](Home.md)
+- [00 项目上下文与发现](00-Project-Context-and-Discovery.md)
 - [01 系统模型](01-System-Model.md)
 - [02 安装与版本固定](02-Install-and-Version-Pinning.md)
 - [03 项目布局与加载](03-Project-Layout-and-Loading.md)

@@ -1,6 +1,11 @@
 ---
 name: emmsui-editor-tools
-description: Create hot-reloadable Unreal Editor tabs, detail customizations, popup windows, prompts, context menus, lists, trees, and asset tools with EmmsUI.
+description: >-
+  Create hot-reloadable Unreal Editor tabs, detail customizations, popup windows, prompts, context menus, lists, trees, and asset tools with EmmsUI. Use when the UI belongs to Unreal Editor workflows. Do not use for runtime in-game UI or for changing EmmsUI C++ internals.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

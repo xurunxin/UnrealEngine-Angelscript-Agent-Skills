@@ -1,6 +1,11 @@
 ---
 name: ueas-review
-description: Review UnrealEngine-Angelscript and EmmsUI changes for correctness, reflection surface, hot reload, cooked builds, networking, UI identity, performance, and version compatibility.
+description: >-
+  Review UnrealEngine-Angelscript and EmmsUI changes for correctness, reflection surface, hot reload, cooked builds, networking, UI identity, performance, and version compatibility. Use when reviewing an existing diff, migration, or incident. Do not use as the primary implementation Skill for a new feature.
+metadata:
+  version: "0.2.0"
+  language: zh-CN
+  owner: xurunxin
 ---
 
 

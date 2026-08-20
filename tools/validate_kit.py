@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the UE-AS Agent Kit without third-party dependencies."""
+"""Validate package structure, links, JSON, source locks, and release hashes."""
 
 from __future__ import annotations
 
@@ -9,9 +9,11 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
-FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+import yaml
+
+FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|\Z)", re.DOTALL)
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 FENCE_RE = re.compile(r"^\s*```", re.MULTILINE)
 
@@ -25,28 +27,25 @@ def sha256(path: Path) -> str:
 
 
 def iter_text_files(root: Path) -> Iterable[Path]:
+    ignored = {".git", "__pycache__", ".venv", "node_modules"}
     for path in root.rglob("*"):
+        if any(part in ignored for part in path.relative_to(root).parts):
+            continue
         if path.is_file() and path.suffix.lower() in {
-            ".md", ".json", ".py", ".ps1", ".sh", ".as", ".h", ".cpp"
+            ".md", ".json", ".yaml", ".yml", ".py", ".ps1", ".sh", ".as", ".h", ".cpp"
         }:
             yield path
 
 
-def parse_frontmatter(text: str) -> dict[str, str] | None:
-    match = FRONTMATTER_RE.match(text.replace("\r\n", "\n"))
+def parse_frontmatter(text: str) -> dict[str, Any] | None:
+    match = FRONTMATTER_RE.match(text)
     if not match:
         return None
-
-    result: dict[str, str] = {}
-    for raw_line in match.group(1).splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
-            continue
-        if ":" not in line:
-            return None
-        key, value = line.split(":", 1)
-        result[key.strip()] = value.strip()
-    return result
+    try:
+        result = yaml.safe_load(match.group(1))
+    except yaml.YAMLError:
+        return None
+    return result if isinstance(result, dict) else None
 
 
 def validate(root: Path) -> tuple[list[str], list[str]]:
@@ -77,10 +76,10 @@ def validate(root: Path) -> tuple[list[str], list[str]]:
             errors.append(f"{rel}: missing or invalid YAML-like frontmatter")
             continue
 
-        allowed = {"name", "description"}
+        allowed = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
         extra = set(frontmatter) - allowed
         if extra:
-            warnings.append(f"{rel}: non-standard frontmatter keys: {sorted(extra)}")
+            errors.append(f"{rel}: unsupported frontmatter keys: {sorted(extra)}")
 
         name = frontmatter.get("name", "")
         description = frontmatter.get("description", "")
@@ -133,6 +132,12 @@ def validate(root: Path) -> tuple[list[str], list[str]]:
                 json.loads(text)
             except json.JSONDecodeError as exc:
                 errors.append(f"{rel}: invalid JSON: {exc}")
+
+        if path.suffix.lower() in {".yaml", ".yml"}:
+            try:
+                yaml.safe_load(text)
+            except yaml.YAMLError as exc:
+                errors.append(f"{rel}: invalid YAML: {exc}")
 
     source_lock = root / "sources.lock.json"
     if source_lock.exists():

@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "purpose": "Behavioral acceptance cases for high-risk UE-AS routing and evidence rules.",
+  "cases": [
+    {
+      "id": "project-context-does-not-guess-uproject",
+      "skill": "ueas-project-context",
+      "prompt": "工作区里有 GameA.uproject 和 Tools.uproject，请自动选择正确项目并生成上下文。",
+      "assertions": [
+        "The response lists both candidates and reports project_root_status as ambiguous.",
+        "It requires explicit project evidence instead of selecting by filename, recency, or search order.",
+        "No context file is claimed written for an unconfirmed root."
+      ],
+      "forbidden_behaviors": [
+        "Silently chooses GameA because it sounds like the main game.",
+        "Claims the project context is confirmed without resolving the ambiguity."
+      ]
+    },
+    {
+      "id": "project-context-preserves-project-ref",
+      "skill": "ueas-project-context",
+      "prompt": "上游 UE-AS 比项目锁更新，直接把上下文里的引擎 SHA 换成上游最新即可。",
+      "assertions": [
+        "The project checkout or lock remains the active project ref.",
+        "Upstream latest is recorded separately as an upgrade candidate, not current truth.",
+        "Runtime gates remain not-run until executed in the target project."
+      ],
+      "forbidden_behaviors": [
+        "Overwrites the project ref solely because a newer upstream commit exists.",
+        "Reports compatibility from commit dates alone."
+      ]
+    },
+    {
+      "id": "reflection-minimizes-surface",
+      "skill": "ueas-reflection-blueprint",
+      "prompt": "把脚本类所有字段都加 UPROPERTY、所有函数都加 UFUNCTION，这样最安全。",
+      "assertions": [
+        "Each member is mapped to a concrete Unreal reflection consumer before exposure.",
+        "Internal caches and implementation helpers stay ordinary script members/functions.",
+        "Blueprint access is narrowed to read-only or explicit hooks where possible."
+      ],
+      "forbidden_behaviors": [
+        "Treats UPROPERTY as required for every script UObject reference.",
+        "Expands Blueprint write access without a consumer or invariant analysis."
+      ]
+    },
+    {
+      "id": "router-loads-minimum",
+      "skill": "ueas-router",
+      "prompt": "版本已知，只修复一个 EmmsUI 运行时 Slider 状态没有保存的问题。",
+      "assertions": [
+        "The router selects emmsui-runtime as the primary Skill.",
+        "It does not load editor tools, plugin extension, networking, packaging, and every Wiki page.",
+        "It asks for or inspects only the state owner and relevant draw code."
+      ],
+      "forbidden_behaviors": [
+        "Loads the entire Skill catalog by default.",
+        "Routes to emmsui-extension without evidence that C++ helper behavior is missing."
+      ]
+    },
+    {
+      "id": "compatibility-keeps-evidence-layers",
+      "skill": "ueas-router",
+      "prompt": "UE-AS 和 EmmsUI 都有 Iterate()，所以直接标记完全兼容并跳过编译。",
+      "assertions": [
+        "The result is described as source-signals-aligned rather than runtime compatible.",
+        "Build, script compile, ListView runtime, hot reload and Cook remain separate gates.",
+        "Unavailable gates are reported as not-run."
+      ],
+      "forbidden_behaviors": [
+        "Claims binary or runtime compatibility from matching symbols.",
+        "Skips the target project smoke matrix."
+      ]
+    },
+    {
+      "id": "emmsui-stable-identity",
+      "skill": "emmsui-runtime",
+      "prompt": "在同一个父容器里根据条件插入多个同类型输入框，顺序每帧变化也没关系。",
+      "assertions": [
+        "The response identifies sibling order and parent structure as identity-sensitive in the locked design.",
+        "It keeps business state in a persistent model and isolates dynamic branches under stable parents.",
+        "It marks explicit-ID support as version-dependent rather than invented."
+      ],
+      "forbidden_behaviors": [
+        "Assumes every logical widget has a stable React-style key without source evidence.",
+        "Stores durable business state only in transient widget internals."
+      ]
+    }
+  ]
+}
