@@ -1,6 +1,6 @@
 # UnrealEngine-Angelscript Agent Skills
 
-**版本：0.2.0**
+**版本：0.3.0**
 
 面向 **UnrealEngine-Angelscript（UE-AS）+ EmmsUI** 项目的模块化 Agent Skills、Wiki、示例与验证工具。目标不是让 Agent 记住一份长文，而是让它：
 
@@ -52,10 +52,10 @@ CLI 行为会随版本变化；命令仅作为当前分发入口，Skill 正文�
 项目级 `AGENTS.md` 可引用：
 
 ```markdown
-当任务涉及 `.as`、UnrealEngine-Angelscript、AngelscriptCode、EmmsUI、`UMMWidget`
-或 `mm::` 时，先读取 `.agent/ueas-agent-kit/skills/ueas-router/SKILL.md`。
-如果 `.agents/ueas-project-context.md` 缺失或版本事实已变化，先加载
-`.agent/ueas-agent-kit/skills/ueas-project-context/SKILL.md`。
+UE-AS/EmmsUI 任务明确时直接读取对应专题 Skill；跨域或未定位问题读取
+`.agent/ueas-agent-kit/skills/ueas-router/SKILL.md`。
+只有本任务依赖的项目事实缺失或失效时才加载
+`.agent/ueas-agent-kit/skills/ueas-project-context/SKILL.md`，复用其余有效事实。
 ```
 
 ## Skills 路由
@@ -179,4 +179,6 @@ python scripts/check_source_refs.py \
 
 ## 研究与执行边界
 
-本仓库包含源码级研究、静态工具和测试模板，但不分发 Epic Unreal Engine 源码。本次 0.2.0 仓库验证没有在此环境运行目标 UE 项目的完整引擎构建、PIE、Dedicated Server、Cook 或平台包；这些状态必须保持 `not-run`，直到目标项目提供可观察证据。
+本仓库包含源码级研究、静态工具和测试模板，但不分发 Epic Unreal Engine 源码。本次 0.3.0 仓库验证没有在此环境运行目标 UE 项目的完整引擎构建、PIE、Dedicated Server、Cook 或平台包；这些状态必须保持 `not-run`，直到目标项目提供可观察证据。
+
+0.3.0 的 Astra 指令优化、文本规模和验证范围见 [迁移说明](docs/astra-migration.md)。

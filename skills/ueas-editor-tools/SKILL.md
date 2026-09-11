@@ -1,13 +1,11 @@
 ---
 name: ueas-editor-tools
-description: >-
-  Build Unreal Editor automation and tools in Angelscript with editor-only compilation, menu extensions, CallInEditor actions, asset operations, prompts, UMG, and subsystem lifetimes. Use when implementing non-EmmsUI editor scripting. Do not use for runtime gameplay or EmmsUI Editor tabs and details UI.
+description: Use when implementing UE-AS editor menus, actions or asset automation. Do not use for runtime gameplay or EmmsUI tabs and details.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
-
 
 # UE‑AS Editor Tools
 
@@ -40,7 +38,7 @@ metadata:
 
 - `Modify()` / Transaction / Undo；
 - Dirty 标记；
-- 保存由用户确认；
+- 按用户已授权的保存范围执行；批量覆盖或未授权资产另行确认；
 - 批量操作的取消与进度；
 - 只处理显式选择或筛选结果；
 - 软引用与加载；
@@ -55,7 +53,7 @@ metadata:
 
 ## 操作设计
 
-复杂参数使用反射 struct + Prompt，而不是几十个临时输入框。把业务操作写成独立函数并可单测；UI 仅做参数采集、确认和进度呈现。
+复杂参数使用反射 struct + Prompt，而不是几十个临时输入框。把业务操作写成独立函数并可单测；UI 仅做参数采集、必要确认和进度呈现。
 
 ## 验证矩阵
 

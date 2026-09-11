@@ -22,7 +22,7 @@ Before changing claims about Unreal, UE-AS, EmmsUI, build commands, APIs, hot re
 
 ## Skill routing contract
 
-Each Skill must own one recognizable job. Its frontmatter description should say what it produces, when it activates, and the nearest task it does not own. Keep the router as the entrypoint and avoid loading every Skill for every task.
+Each Skill must own one recognizable job. Its frontmatter description should say what it produces, when it activates, and the nearest task it does not own. Use the router for ambiguous or cross-domain tasks; load a clear specialist directly. Avoid loading every Skill for every task.
 
 ## Required validation
 

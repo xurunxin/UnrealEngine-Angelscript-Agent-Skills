@@ -1,6 +1,6 @@
 # Skills Index
 
-入口：[`skills/ueas-router/SKILL.md`](skills/ueas-router/SKILL.md)
+跨域或未定位问题的入口（明确任务可直接加载专题）：[`skills/ueas-router/SKILL.md`](skills/ueas-router/SKILL.md)
 
 | Skill | 作用 |
 |---|---|

@@ -1,4 +1,4 @@
 interface:
   display_name: "UE-AS Skill Router"
   short_description: "Route UE-AS and EmmsUI work to focused skills"
-  default_prompt: "Use $ueas-router to select the smallest useful UE-AS or EmmsUI skill set and preserve evidence boundaries."
+  default_prompt: "Use $ueas-router to select relevant UE-AS or EmmsUI skills and carry out the requested task with verified project context."
