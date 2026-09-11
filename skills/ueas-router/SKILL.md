@@ -1,59 +1,21 @@
 ---
 name: ueas-router
-description: >-
-  Route a version-sensitive or cross-cutting UnrealEngine-Angelscript and EmmsUI
-  request to the smallest useful specialist Skill set while preserving project facts
-  and evidence gates. Use when the task is ambiguous, spans multiple UE-AS domains,
-  or depends on unknown engine/plugin context. Do not use for a single clearly scoped
-  specialist task after the project context is already current.
+description: Use when a UE-AS or EmmsUI task is ambiguous or spans domains. Route to relevant specialists; do not use for a clear specialist task.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
 
 # UE-AS / EmmsUI Router
 
-## 产物
+为当前任务选择需要的专题并继续执行。任务已经明确时直接使用对应 Skill；跨域任务按实际依赖补充专题，不预加载全部 Wiki，也不要求固定格式的路由报告。
 
-输出一个最小路由决定，而不是把全部 Skill 和 Wiki 注入上下文：
+## 项目事实
 
-```yaml
-Route:
-  project_context: current | stale | missing | not-needed
-  primary_skill: ""
-  supporting_skills: []
-  references_to_load: []
-  evidence_required: []
-  excluded_skills: []
-```
+需要项目版本、路径或运行模式时，复用 `<Project>/.agents/ueas-project-context.md` 中仍有效的事实。缺失或变化影响本任务时，使用 `ueas-project-context` 创建或刷新相关部分。独立概念问题、已提供充分事实的代码解释不需要项目扫描。
 
-## 何时使用
-
-使用本 Router：
-
-- 请求只说“UE-AS/EmmsUI 出问题”但未定位层级；
-- 同时涉及升级、反射、网络、Binding、UI、热重载或发布中的两个以上领域；
-- 版本、项目根、插件来源、Script roots 或目标运行模式未知；
-- 需要从研究、实现、验证到迁移形成跨 Skill 交接；
-- 审查现有改动，但风险分布尚不清楚。
-
-不要使用本 Router：
-
-- 已知项目上下文且任务明确属于一个专题 Skill；
-- 纯通用 Unreal/C++ 问题，不涉及 UE-AS 或 EmmsUI 特有边界；
-- 只需要解释一个已提供的代码片段且无需项目事实。
-
-## 第一步：判断项目上下文
-
-检查 `<Project>/.agents/ueas-project-context.md`：
-
-- `current`：来源仍有效，任务依赖的字段已确认；直接路由。
-- `stale`：Engine/UE-AS/EmmsUI ref、模块、Script roots、Binding 或目标平台已改变；先加载 `ueas-project-context` 的 `refresh` 模式。
-- `missing`：任务依赖项目事实但文件不存在；先加载 `ueas-project-context` 的 `create` 模式。
-- `not-needed`：任务是稳定概念解释，或用户已提供完成任务所需的精确事实。
-
-不得因为仓库名、版本目录或上游最新提交看起来合理就把上下文标为 current。
+项目锁定 ref 和当前工作区证据优先于上游 latest。多个项目或插件副本无法通过用户指定路径、配置或运行证据消歧时，先报告候选并确认目标。
 
 ## 任务路由
 
@@ -74,70 +36,15 @@ Route:
 | 修改 EmmsUI C++ helper、属性状态、事件或模块 | `../emmsui-extension/SKILL.md` | 现有 helper 组合不需要扩展 |
 | 审查 diff、迁移、事故或兼容风险 | `../ueas-review/SKILL.md` | 新功能实现交给领域 Skill |
 
-## 多 Skill 规则
+## 跨专题边界
 
-默认只选一个 Primary Skill。只有存在真实输入/输出依赖时才增加 Supporting Skill：
+- Gameplay 需要 Blueprint 消费者时补充 Reflection；跨网络角色时补充 Networking。
+- EmmsUI 按 Runtime 或 Editor 场景选用；确认现有 helper 缺能力后才进入 Extension。
+- 实现需要专门诊断或新增验证时补充 Testing；进入 Cook、缓存或 Shipping 才加载 Packaging。
+- 版本变化先更新项目事实；不要将最新上游 ref 当作已安装版本。
 
-- `project-context → bootstrap`：先确认当前基线，再设计升级；
-- `gameplay → reflection`：Gameplay 产物确实需要 Blueprint/Editor 消费；
-- `gameplay → networking`：状态必须跨 Authority/客户端；
-- `runtime/editor EmmsUI → extension`：现有 helper 明确缺能力且源码证据已确认；
-- `任意实现 → testing`：需要新增领域验证；
-- `任意发布相关实现 → packaging`：进入 Cook/Shipping 路径。
+## 执行与证据
 
-不要把“可能相关”当依赖。Runtime EmmsUI、Editor EmmsUI 和 EmmsUI Extension 不应默认同时加载。
+UE-AS 需要含引擎修改的源码构建，不能当普通 Launcher 引擎插件安装。专属 API、热重载、反射、Editor 隔离、网络和 UI 身份约束由对应专题提供。
 
-## 全局不变量
-
-- UE-AS 是修改过的 Unreal 源码引擎加插件，不是普通项目插件。
-- 项目锁定 ref 与工作区证据高于上游 latest 和社区示例。
-- `source-signals-aligned` 不等于 build、runtime 或 Cook 通过。
-- 普通脚本成员/函数优先；只有跨 Unreal 反射边界时才添加宏。
-- 函数体热重载与反射/字段/继承结构变化必须分开处理。
-- Editor-only 类型不能泄漏到 cooked Runtime 签名与资产依赖。
-- 网络行为必须在真实 client/server 模式验证。
-- EmmsUI 状态由持久模型持有，Draw 结构和同类兄弟顺序保持稳定。
-- 任何发布结论必须给出 simulate-cooked、Cook、Package 和启动证据的实际状态。
-
-## 证据语言
-
-允许：
-
-```text
-planned
-not-run
-source-signal-present
-source-signals-aligned
-build-passed
-script-compile-passed
-runtime-smoke-passed
-cook-passed
-package-launch-passed
-```
-
-禁止把计划、静态检查、成功命令或 Worker 总结升级成未观察到的运行结论。
-
-## 输出契约
-
-```yaml
-Result:
-  project_context: current | stale | missing | not-needed
-  primary_skill: ""
-  supporting_skills: []
-  facts_used: []
-  assumptions: []
-  evidence_required: []
-  excluded_skills:
-    - skill: ""
-      reason: ""
-  runtime_gates:
-    build: not-run
-    script_compile: not-run
-    pie: not-run
-    dedicated_server: not-run
-    cook: not-run
-    package_launch: not-run
-  next_handoff:
-    skill: null
-    completion_gate: "observable pass condition"
-```
+在用户已授权范围内完成实现并持续修复可逆问题。仅请求路由时给出选择及理由；请求实现时路由是过程，不能以待交接计划结束。报告实际执行的编译、运行或发布检查；缺环境写 `not-run`，静态信号写 `source-signal-present` 或 `source-signals-aligned`，不能据此声称 runtime/Cook 成功。

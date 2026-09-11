@@ -1,13 +1,11 @@
 ---
 name: ueas-packaging-performance
-description: >-
-  Prepare UnrealEngine-Angelscript projects for cooked and shipping builds, precompiled script caches, transpiled/JIT code, performance profiling, and safe release workflows. Use when running simulate-cooked, Cook, Package, launch, or performance gates. Do not use for ordinary editor iteration or storefront publishing.
+description: Use when profiling UE-AS or preparing cooked builds, script caches and JIT. Do not use for ordinary editor iteration or storefront publishing.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
-
 
 # UE‑AS Packaging and Performance
 

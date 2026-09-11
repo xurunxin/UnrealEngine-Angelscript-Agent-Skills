@@ -1,13 +1,11 @@
 ---
 name: ueas-core-scripting
-description: >-
-  Write idiomatic UnrealEngine-Angelscript classes, structs, functions, values, references, namespaces, defaults, literals, and hot-reload-friendly code. Use when the task concerns UE-AS language semantics or code organization. Do not use for native C++ binding design or broad gameplay architecture.
+description: Use when writing UE-AS language constructs and script organization. Do not use for C++ bindings or gameplay architecture.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
-
 
 # UE‑AS Core Scripting
 
@@ -81,12 +79,12 @@ Script/
 
 ## 验证
 
-保存后必须查看：
+代码变更后先检查 Editor 编译与受影响行为，再按风险补充：
 
 - Editor 输出与 VS Code Problems；
 - 热重载是否保留当前实例；
 - 是否出现结构性重实例化；
-- 单元测试；
-- simulate-cooked。
+- 覆盖受影响规则的单元测试；
+- 涉及 Editor 隔离或发布路径时的 simulate-cooked。
 
 仅有语法高亮不代表 Editor 编译成功。

@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "artifact": "UnrealEngine-Angelscript-Agent-Skills",
-  "version": "0.2.0",
-  "generated_at": "2026-08-20",
+  "version": "0.3.0",
+  "generated_at": "2026-09-11",
   "language": [
     "zh-CN",
     "en-US-code-identifiers"
@@ -26,7 +26,7 @@
     "unit_tests": "python -m unittest discover -s tests -v"
   },
   "counts": {
-    "files": 120,
+    "files": 124,
     "skills": 15,
     "wiki_markdown": 32,
     "examples": 18

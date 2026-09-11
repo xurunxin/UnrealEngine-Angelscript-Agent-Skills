@@ -1,13 +1,11 @@
 ---
 name: ueas-testing-debugging
-description: >-
-  Create and run UnrealEngine-Angelscript unit tests, integration tests, coverage, VS Code debugging, exception diagnostics, and CI compile gates. Use when producing or interpreting test and debug evidence. Do not use for feature implementation that has no testing or diagnosis scope.
+description: Use when diagnosing UE-AS failures or building tests and CI evidence. Do not use as the primary skill for feature implementation.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
-
 
 # UE‑AS Testing and Debugging
 
@@ -81,8 +79,8 @@ UnrealEditor-Cmd.exe "<Project>.uproject" `
 
 ## Agent 工作流
 
-- 先写失败测试再修复；
-- 只运行相关小集合，随后运行全量门；
+- 用失败日志或可复现案例定位；适合自动化的缺陷补充回归测试；
+- 先运行覆盖受影响行为的检查；只有跨模块风险、相关失败或项目 CI 要求时扩展到全量验证；
 - 不把输出日志中出现测试名当作通过；
 - 保存实际退出码和失败列表；
 - 无法运行 Editor 时明确标记“仅静态审查”，不要伪造结果。
