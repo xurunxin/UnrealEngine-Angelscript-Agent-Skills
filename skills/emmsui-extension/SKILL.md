@@ -1,13 +1,11 @@
 ---
 name: emmsui-extension
-description: >-
-  Extend the EmmsUI C++ plugin safely across mm<T> bindings, widget identity, attribute diffing, event interception, helper semantics, GC, rebuild rules, and runtime/editor modules. Use when an existing helper cannot express the required behavior. Do not use for composing UI from already available EmmsUI helpers.
+description: Use when extending EmmsUI C++ helpers, state, events or bindings. Do not use when existing helpers can compose the required UI.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
-
 
 # Extending EmmsUI
 

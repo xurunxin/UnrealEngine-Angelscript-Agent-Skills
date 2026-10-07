@@ -1,16 +1,12 @@
 # UE-AS / EmmsUI Agent Routing
 
-当任务涉及以下任一内容时，先读取 `skills/ueas-router/SKILL.md`：
+只在任务涉及 UE-AS/EmmsUI 特有能力时使用本套 Skills。职责明确且相关项目事实有效时直接读取对应专题 `skills/<name>/SKILL.md`；跨域或未定位的问题读取 `skills/ueas-router/SKILL.md`。普通 Unreal C++ 的 UPROPERTY/UFUNCTION 使用不会单独触发本套 Skills。
 
-- `.as` 文件、`Script/` 目录；
-- UnrealEngine-Angelscript、AngelscriptCode、AngelscriptEditor；
-- `UPROPERTY`、`UFUNCTION`、`BlueprintOverride`、`BlueprintEvent`；
-- `UMMWidget`、`mm::`、`mm<T>`、EmmsUI；
-- UE-AS 的测试、网络、预编译脚本、Static JIT 或 C++ Binding。
+修改本仓库文档时，只读取受影响入口、链接参考及索引；涉及发布元数据时读取 `scripts/generate_release_metadata.py` 和 `docs/QUALITY-GATES.md`。不要为技能文案维护扫描不存在的 UE 项目。
 
 ## 项目上下文门
 
-优先读取 `.agents/ueas-project-context.md`。以下情况先加载 `skills/ueas-project-context/SKILL.md`：
+项目实现需要路径、版本或配置事实时，复用 `.agents/ueas-project-context.md`。以下情况影响当前任务时加载 `skills/ueas-project-context/SKILL.md`：
 
 - 上下文不存在；
 - Engine、UE-AS 或 EmmsUI ref 已变化；
@@ -34,3 +30,5 @@
 ## 证据语言
 
 没有实际执行时使用 `planned` 或 `not-run`。匹配源码符号只能写 `source-signal-present` 或 `source-signals-aligned`，不能写 `runtime compatible`。成功命令不能替代产物、运行或感知质量检查。
+
+已授权实现中，路由、上下文采集和检查是中间步骤；继续完成并修复可逆工作，直到相关验收通过或存在明确环境阻塞。仅概念解释、审查或计划请求保持其原有范围。

@@ -85,6 +85,58 @@
         "Assumes every logical widget has a stable React-style key without source evidence.",
         "Stores durable business state only in transient widget internals."
       ]
+    },
+    {
+      "id": "router-continues-authorized-work",
+      "skill": "ueas-router",
+      "prompt": "项目路径和版本已确认，请实现 UE-AS 按钮触发服务器门状态更新并验证。",
+      "assertions": [
+        "Selects gameplay/reflection/networking only where required by the actual implementation.",
+        "Continues the authorized implementation and relevant checks after routing, or states the concrete environment blocker."
+      ],
+      "forbidden_behaviors": [
+        "Ends after producing only a Route/Result handoff form.",
+        "Asks again for permission to make the requested reversible code changes."
+      ]
+    },
+    {
+      "id": "context-review-does-not-rewrite",
+      "skill": "ueas-project-context",
+      "prompt": "只审查这份 UE-AS 上下文是否过期；项目路径已经明确，不要修改文件。",
+      "assertions": [
+        "Checks relevant source/ref evidence and reports stale or unknown facts.",
+        "Preserves review-only scope without rewriting the cache."
+      ],
+      "forbidden_behaviors": [
+        "Creates or refreshes the context despite the review-only request.",
+        "Scans unrelated engine/plugin locations merely to fill every template field."
+      ]
+    },
+    {
+      "id": "reflection-loads-callback-contract",
+      "skill": "ueas-reflection-blueprint",
+      "prompt": "给已有 UE-AS 对象增加按名 Timer 回调，重复初始化后不能多次注册。",
+      "assertions": [
+        "Loads the callback reference for the named Timer and lifecycle constraints.",
+        "Exposes only the callback through UFUNCTION and checks stable callback identity plus repeated initialization."
+      ],
+      "forbidden_behaviors": [
+        "Adds UFUNCTION to all script helpers.",
+        "Treats repeated Timer initialization and teardown as ordinary function-body editing without lifecycle validation."
+      ]
+    },
+    {
+      "id": "testing-selects-risk-based-gates",
+      "skill": "ueas-testing-debugging",
+      "prompt": "修复已定位的 UE-AS 纯函数数值错误，现有测试能复现，项目无新增 CI 要求。",
+      "assertions": [
+        "Uses the failing existing test and verifies the affected rule after the fix.",
+        "Expands verification only if failures or cross-module risks justify it."
+      ],
+      "forbidden_behaviors": [
+        "Requires a full Cook/Package run as a universal prerequisite for this isolated correction.",
+        "Reports runtime/Cook success from static test results."
+      ]
     }
   ]
 }

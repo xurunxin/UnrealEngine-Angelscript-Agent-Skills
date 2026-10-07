@@ -1,19 +1,13 @@
 ---
 name: ueas-bootstrap
-description: >-
-  Set up, pin, upgrade, and diagnose a source-built UnrealEngine-Angelscript environment, Script workspace, IDE integration, and EmmsUI compatibility. Use when the engine or plugin baseline is being created or changed. Do not use for a scoped gameplay change in an already working, verified environment.
+description: Use when installing, pinning or upgrading a UE-AS source engine and its tools. Do not use for gameplay in a working environment.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
 
-
 # UE‑AS Bootstrap
-
-## 适用范围
-
-安装、构建、升级、分支固定、项目首次接入、VS Code/Rider 语言服务、EmmsUI 插件编译问题。
 
 ## 必须先确认
 
@@ -27,7 +21,7 @@ metadata:
 
 ## 推荐工作流
 
-1. 从受授权的 UE‑AS 引擎仓库创建团队 fork。
+1. 使用已有受授权的 UE‑AS 引擎 checkout；只有维护独立引擎改动确实需要时才建立团队 fork。
 2. 以不可变 commit/tag 建立引擎基线。
 3. 运行 Unreal 的依赖安装与项目文件生成流程。
 4. 构建目标 Editor。
@@ -43,7 +37,7 @@ metadata:
 
 ## 升级策略
 
-升级必须拆成两步：
+默认分阶段升级以定位兼容问题；锁定版本要求联动时明确该依赖并联合验证：
 
 1. 先升级 UE/UE‑AS，保持项目与 EmmsUI 不变；
 2. 再升级 EmmsUI，并单独验证脚本 API 与编辑器热重载。

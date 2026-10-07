@@ -5,77 +5,77 @@
     {
       "name": "emmsui-editor-tools",
       "path": "skills/emmsui-editor-tools/SKILL.md",
-      "description": "Create hot-reloadable Unreal Editor tabs, detail customizations, popup windows, prompts, context menus, lists, trees, and asset tools with EmmsUI. Use when the UI belongs to Unreal Editor workflows. Do not use for runtime in-game UI or for changing EmmsUI C++ internals."
+      "description": "Use when building EmmsUI Editor tabs, details, menus or asset UI. Do not use for runtime UI or C++ plugin internals."
     },
     {
       "name": "emmsui-extension",
       "path": "skills/emmsui-extension/SKILL.md",
-      "description": "Extend the EmmsUI C++ plugin safely across mm<T> bindings, widget identity, attribute diffing, event interception, helper semantics, GC, rebuild rules, and runtime/editor modules. Use when an existing helper cannot express the required behavior. Do not use for composing UI from already available EmmsUI helpers."
+      "description": "Use when extending EmmsUI C++ helpers, state, events or bindings. Do not use when existing helpers can compose the required UI."
     },
     {
       "name": "emmsui-runtime",
       "path": "skills/emmsui-runtime/SKILL.md",
-      "description": "Build runtime immediate-mode UMG interfaces with EmmsUI using UMMWidget, draw contexts, overlays, widget components, persistent state, attributes, slots, events, and stable identity. Use when drawing in-game or viewport UI. Do not use for Editor tabs or for modifying EmmsUI C++ bindings."
+      "description": "Use when building EmmsUI in-game, viewport or world-space UI. Do not use for Editor tabs or C++ plugin extensions."
     },
     {
       "name": "ueas-bootstrap",
       "path": "skills/ueas-bootstrap/SKILL.md",
-      "description": "Set up, pin, upgrade, and diagnose a source-built UnrealEngine-Angelscript environment, Script workspace, IDE integration, and EmmsUI compatibility. Use when the engine or plugin baseline is being created or changed. Do not use for a scoped gameplay change in an already working, verified environment."
+      "description": "Use when installing, pinning or upgrading a UE-AS source engine and its tools. Do not use for gameplay in a working environment."
     },
     {
       "name": "ueas-core-scripting",
       "path": "skills/ueas-core-scripting/SKILL.md",
-      "description": "Write idiomatic UnrealEngine-Angelscript classes, structs, functions, values, references, namespaces, defaults, literals, and hot-reload-friendly code. Use when the task concerns UE-AS language semantics or code organization. Do not use for native C++ binding design or broad gameplay architecture."
+      "description": "Use when writing UE-AS language constructs and script organization. Do not use for C++ bindings or gameplay architecture."
     },
     {
       "name": "ueas-cpp-bindings",
       "path": "skills/ueas-cpp-bindings/SKILL.md",
-      "description": "Expose C++ APIs to UnrealEngine-Angelscript using automatic reflection bindings, script mixins, metadata controls, and narrowly scoped manual bindings. Use when a required native API is not correctly visible to scripts. Do not use when ordinary script code or reflection annotations already solve the task."
+      "description": "Use when a native C++ API is missing or incorrect in UE-AS bindings. Do not use when existing script APIs already solve the task."
     },
     {
       "name": "ueas-editor-tools",
       "path": "skills/ueas-editor-tools/SKILL.md",
-      "description": "Build Unreal Editor automation and tools in Angelscript with editor-only compilation, menu extensions, CallInEditor actions, asset operations, prompts, UMG, and subsystem lifetimes. Use when implementing non-EmmsUI editor scripting. Do not use for runtime gameplay or EmmsUI Editor tabs and details UI."
+      "description": "Use when implementing UE-AS editor menus, actions or asset automation. Do not use for runtime gameplay or EmmsUI tabs and details."
     },
     {
       "name": "ueas-gameplay",
       "path": "skills/ueas-gameplay/SKILL.md",
-      "description": "Design and implement Unreal gameplay with Angelscript Actors, Components, Subsystems, Enhanced Input, timers, data flow, and maintainable C++/Blueprint boundaries. Use when implementing UE-AS gameplay architecture or behavior. Do not use for isolated reflection, networking, packaging, or generic C++-only tasks."
+      "description": "Use when implementing UE-AS Actor, Component, Subsystem or input behavior. Do not use for isolated binding or networking tasks."
     },
     {
       "name": "ueas-networking",
       "path": "skills/ueas-networking/SKILL.md",
-      "description": "Implement and verify Unreal multiplayer replication and RPCs in Angelscript, including authority, ownership, reliability, OnRep, conditions, and dedicated-server integration tests. Use when state or calls cross network roles. Do not use for single-player state flow or general gameplay architecture without networking."
+      "description": "Use when implementing UE-AS replication, RPCs, authority or ownership. Do not use for single-player state flow."
     },
     {
       "name": "ueas-packaging-performance",
       "path": "skills/ueas-packaging-performance/SKILL.md",
-      "description": "Prepare UnrealEngine-Angelscript projects for cooked and shipping builds, precompiled script caches, transpiled/JIT code, performance profiling, and safe release workflows. Use when running simulate-cooked, Cook, Package, launch, or performance gates. Do not use for ordinary editor iteration or storefront publishing."
+      "description": "Use when profiling UE-AS or preparing cooked builds, script caches and JIT. Do not use for ordinary editor iteration or storefront publishing."
     },
     {
       "name": "ueas-project-context",
       "path": "skills/ueas-project-context/SKILL.md",
-      "description": "Create or refresh a verified `.agents/ueas-project-context.md` for an UnrealEngine-Angelscript project by discovering the actual Unreal source build, UE-AS and EmmsUI refs, project modules, Script roots, bindings, and validation gates. Use when onboarding an unfamiliar project, after syncing or upgrading the engine/plugins, or when project facts are missing or stale. Do not use for generic Unreal questions or a narrowly scoped code change whose project context is already current."
+      "description": "Use when UE-AS project facts are missing or stale to verify the engine, plugins and Script roots. Do not use for context-independent questions."
     },
     {
       "name": "ueas-reflection-blueprint",
       "path": "skills/ueas-reflection-blueprint/SKILL.md",
-      "description": "Design the smallest safe Unreal reflection surface from Angelscript for UPROPERTY, UFUNCTION, Blueprint hooks, delegates, timers, accessors, UMG, serialization, and GC boundaries. Use when Unreal or Blueprint must discover a script member. Do not use for exposing non-reflected native C++ APIs or implementing replication policy."
+      "description": "Use when UE-AS members need Blueprint, reflection, delegate, timer or UMG access. Do not use for native C++ bindings or replication policy."
     },
     {
       "name": "ueas-review",
       "path": "skills/ueas-review/SKILL.md",
-      "description": "Review UnrealEngine-Angelscript and EmmsUI changes for correctness, reflection surface, hot reload, cooked builds, networking, UI identity, performance, and version compatibility. Use when reviewing an existing diff, migration, or incident. Do not use as the primary implementation Skill for a new feature."
+      "description": "Use when reviewing a UE-AS or EmmsUI diff, migration or incident. Do not use as the primary skill for implementing new features."
     },
     {
       "name": "ueas-router",
       "path": "skills/ueas-router/SKILL.md",
-      "description": "Route a version-sensitive or cross-cutting UnrealEngine-Angelscript and EmmsUI request to the smallest useful specialist Skill set while preserving project facts and evidence gates. Use when the task is ambiguous, spans multiple UE-AS domains, or depends on unknown engine/plugin context. Do not use for a single clearly scoped specialist task after the project context is already current."
+      "description": "Use when a UE-AS or EmmsUI task is ambiguous or spans domains. Route to relevant specialists; do not use for a clear specialist task."
     },
     {
       "name": "ueas-testing-debugging",
       "path": "skills/ueas-testing-debugging/SKILL.md",
-      "description": "Create and run UnrealEngine-Angelscript unit tests, integration tests, coverage, VS Code debugging, exception diagnostics, and CI compile gates. Use when producing or interpreting test and debug evidence. Do not use for feature implementation that has no testing or diagnosis scope."
+      "description": "Use when diagnosing UE-AS failures or building tests and CI evidence. Do not use as the primary skill for feature implementation."
     }
   ]
 }

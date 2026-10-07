@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 — 2026-09-11
+
+- 按 Astra 提示词指导压缩 15 个技能 description；Router、Project Context 与 Reflection 改为按任务读取资料。
+- 保留 UE-AS/EmmsUI API、反射、结构性热重载、GC、网络、Editor 隔离及发布证据约束。
+- 消除 AGENTS 强制所有任务先加载 Router 的冲突，明确路由后继续已授权实现；缩小无关全量检查与重复确认。
+- 同步 skill-index、MANIFEST 与 SHA256SUMS；验证范围见 docs/astra-migration.md。
+
 ## 0.2.0 — 2026-08-20
 
 - 新增 `ueas-project-context`，从实际 `.uproject`、源码引擎、UE-AS/EmmsUI ref、模块、Target、Script roots 和 Binding 生成 `.agents/ueas-project-context.md`。

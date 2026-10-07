@@ -81,6 +81,263 @@
       "expected_skill": "none",
       "category": "unrelated",
       "rationale": "The request is outside UnrealEngine-Angelscript and EmmsUI."
+    },
+    {
+      "id": "ueas-bootstrap-astra-positive-1",
+      "prompt": "在新机器上安装固定 SHA 的 UE-AS 源码引擎并配置 VS Code 调试。",
+      "expected_skill": "ueas-bootstrap",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-bootstrap-astra-positive-2",
+      "prompt": "将现有 UE-AS 引擎升级到指定 commit，核对二进制插件重编译要求。",
+      "expected_skill": "ueas-bootstrap",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-bootstrap-astra-boundary",
+      "prompt": "已工作的 UE-AS 项目里添加交互组件。",
+      "expected_skill": "ueas-gameplay",
+      "category": "boundary",
+      "boundary_for": "ueas-bootstrap",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-core-scripting-astra-positive-1",
+      "prompt": "解释 UE-AS 的 float32、float64、struct 引用和 n 字面量。",
+      "expected_skill": "ueas-core-scripting",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-core-scripting-astra-positive-2",
+      "prompt": "把这个 UE-AS 文件中的 C++ 指针写法改为有效脚本语法。",
+      "expected_skill": "ueas-core-scripting",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-core-scripting-astra-boundary",
+      "prompt": "为未暴露的 C++ 类型实现脚本绑定。",
+      "expected_skill": "ueas-cpp-bindings",
+      "category": "boundary",
+      "boundary_for": "ueas-core-scripting",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-gameplay-astra-positive-1",
+      "prompt": "用 UE-AS 创建 Actor 默认组件和扫描原点。",
+      "expected_skill": "ueas-gameplay",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-gameplay-astra-positive-2",
+      "prompt": "为跨地图游戏会话选择 UE-AS Subsystem 并实现其生命周期。",
+      "expected_skill": "ueas-gameplay",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-gameplay-astra-boundary",
+      "prompt": "只修复 UE-AS RPC Ownership 错误。",
+      "expected_skill": "ueas-networking",
+      "category": "boundary",
+      "boundary_for": "ueas-gameplay",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-networking-astra-positive-1",
+      "prompt": "用 UE-AS 复制门的持久状态并支持晚加入客户端。",
+      "expected_skill": "ueas-networking",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-networking-astra-positive-2",
+      "prompt": "排查 UE-AS 高频 Reliable RPC 在服务器上积压。",
+      "expected_skill": "ueas-networking",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-networking-astra-boundary",
+      "prompt": "做一个不联网的 UE-AS 健康值组件。",
+      "expected_skill": "ueas-gameplay",
+      "category": "boundary",
+      "boundary_for": "ueas-networking",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-testing-debugging-astra-positive-1",
+      "prompt": "为 UE-AS 异步关卡行为编写 IntegrationTest 并运行。",
+      "expected_skill": "ueas-testing-debugging",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-testing-debugging-astra-positive-2",
+      "prompt": "UE-AS 调试器暂停在异常中，请按脚本栈定位失败。",
+      "expected_skill": "ueas-testing-debugging",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-testing-debugging-astra-boundary",
+      "prompt": "给这个 UE-AS Actor 增加输入行为，已有测试流程可用。",
+      "expected_skill": "ueas-gameplay",
+      "category": "boundary",
+      "boundary_for": "ueas-testing-debugging",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-cpp-bindings-astra-positive-1",
+      "prompt": "C++ USTRUCT 方法在 UE-AS 中不可见，评估 ScriptMixin。",
+      "expected_skill": "ueas-cpp-bindings",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-cpp-bindings-astra-positive-2",
+      "prompt": "为非 UHT 原生类型设计最小 FAngelscriptBinds 绑定。",
+      "expected_skill": "ueas-cpp-bindings",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-cpp-bindings-astra-boundary",
+      "prompt": "只将 UE-AS 现有字段暴露给 Blueprint 只读访问。",
+      "expected_skill": "ueas-reflection-blueprint",
+      "category": "boundary",
+      "boundary_for": "ueas-cpp-bindings",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-packaging-performance-astra-positive-1",
+      "prompt": "为 UE-AS Shipping 构建生成匹配可执行文件的预编译缓存。",
+      "expected_skill": "ueas-packaging-performance",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-packaging-performance-astra-positive-2",
+      "prompt": "Profile UE-AS Tick 热点并评估 Static JIT 是否有收益。",
+      "expected_skill": "ueas-packaging-performance",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-packaging-performance-astra-boundary",
+      "prompt": "Editor 中只修改 UE-AS 普通函数体。",
+      "expected_skill": "ueas-core-scripting",
+      "category": "boundary",
+      "boundary_for": "ueas-packaging-performance",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-editor-tools-astra-positive-1",
+      "prompt": "用 UE-AS 实现资产右键批量重命名操作并支持 Undo。",
+      "expected_skill": "ueas-editor-tools",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-editor-tools-astra-positive-2",
+      "prompt": "实现非 EmmsUI 的 UE-AS CallInEditor 工具按钮。",
+      "expected_skill": "ueas-editor-tools",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-editor-tools-astra-boundary",
+      "prompt": "用 UMMEditorUtilityTab 制作可热重载的资产面板。",
+      "expected_skill": "emmsui-editor-tools",
+      "category": "boundary",
+      "boundary_for": "ueas-editor-tools",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "emmsui-runtime-astra-positive-1",
+      "prompt": "使用 EmmsUI 做一个 3D WidgetComponent 的运行时界面。",
+      "expected_skill": "emmsui-runtime",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "emmsui-runtime-astra-boundary",
+      "prompt": "用 EmmsUI 做 Editor Details 定制面板。",
+      "expected_skill": "emmsui-editor-tools",
+      "category": "boundary",
+      "boundary_for": "emmsui-runtime",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "emmsui-editor-tools-astra-positive-1",
+      "prompt": "用 EmmsUI Editor Tab 实现可见项虚拟化列表。",
+      "expected_skill": "emmsui-editor-tools",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "emmsui-editor-tools-astra-positive-2",
+      "prompt": "用 EmmsUI Struct Details 读写模型并支持 Transaction。",
+      "expected_skill": "emmsui-editor-tools",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "emmsui-editor-tools-astra-boundary",
+      "prompt": "用 EmmsUI 做游戏内 HUD。",
+      "expected_skill": "emmsui-runtime",
+      "category": "boundary",
+      "boundary_for": "emmsui-editor-tools",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "emmsui-extension-astra-positive-1",
+      "prompt": "现有 EmmsUI helper 无法表达双向状态，请扩展 C++ helper。",
+      "expected_skill": "emmsui-extension",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "emmsui-extension-astra-positive-2",
+      "prompt": "修复 EmmsUI Pending 属性值销毁时的 GC 引用处理。",
+      "expected_skill": "emmsui-extension",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "emmsui-extension-astra-boundary",
+      "prompt": "用现成 EmmsUI Button 和 EditableTextBox 组合界面。",
+      "expected_skill": "emmsui-runtime",
+      "category": "boundary",
+      "boundary_for": "emmsui-extension",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
+    },
+    {
+      "id": "ueas-review-astra-positive-1",
+      "prompt": "审查这个已完成的 UE-AS Gameplay diff 并给出有证据的缺陷。",
+      "expected_skill": "ueas-review",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-review-astra-positive-2",
+      "prompt": "审查 EmmsUI 变更是否造成持久输入状态错位。",
+      "expected_skill": "ueas-review",
+      "category": "positive",
+      "rationale": "The requested behavior is owned by this focused skill."
+    },
+    {
+      "id": "ueas-review-astra-boundary",
+      "prompt": "实现一个新的 UE-AS 扫描组件。",
+      "expected_skill": "ueas-gameplay",
+      "category": "boundary",
+      "boundary_for": "ueas-review",
+      "rationale": "The adjacent task should route directly to its owner without loading this skill."
     }
   ]
 }

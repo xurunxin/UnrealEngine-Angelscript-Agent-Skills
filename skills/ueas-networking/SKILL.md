@@ -1,19 +1,13 @@
 ---
 name: ueas-networking
-description: >-
-  Implement and verify Unreal multiplayer replication and RPCs in Angelscript, including authority, ownership, reliability, OnRep, conditions, and dedicated-server integration tests. Use when state or calls cross network roles. Do not use for single-player state flow or general gameplay architecture without networking.
+description: Use when implementing UE-AS replication, RPCs, authority or ownership. Do not use for single-player state flow.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   language: zh-CN
   owner: xurunxin
 ---
 
-
 # UE‑AS Networking
-
-## 适用范围
-
-`Replicated`、`ReplicatedUsing`、`Server`、`Client`、`NetMulticast`、Authority、Ownership、多人同步。
 
 ## 先建立权威模型
 
